@@ -32,7 +32,7 @@ export default function ButtonModal(props) {
         setFormData(prevData => {
             return {
                 ...prevData,
-                [event.target.name] : event.target.value,
+                [event.target.name]: event.target.value,
                 // []: event.target.value
 
             }
@@ -53,7 +53,7 @@ export default function ButtonModal(props) {
             <p>Stack</p>
              */}
             {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
-            <input type="text" value={formData.fname} name="name" placeholder="firstName" className="border formInput" onChange={HandleForm} />
+            <input type="text" value={formData.fname} name="fname" placeholder="firstName" className="border formInput" onChange={HandleForm} />
             <input type="text" value={formData.lname} name="lname" placeholder="lastName" className="border formInput" onChange={HandleForm} />
             <br />
             <p className="text-start">My first Name is {formData.fname} and my Last name {formData.lname}</p>
