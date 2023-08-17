@@ -3,6 +3,11 @@ import React from 'react'
 const Navbar = () => {
     return (
         <div>
+            <div className='w-[30%] pt-8 pb-4 flex flex-col gap-2 text- '>
+                <img src={img} alt="" className='md:w-[50px] w-[40px]' />
+                <h1 className='font-bold text-base'> {title} </h1>
+                <p className='text-sm lg:text-base'> {description} </p>
+            </div>
             <header class="shadow-sm">
                 <div
                     class="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4"
