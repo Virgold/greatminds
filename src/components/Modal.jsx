@@ -7,11 +7,12 @@ export default function ButtonModal(props) {
     const [age, setAge] = useState(0)
     const [task, setTask] = useState(["Task 1",])
     const [formData, setFormData] = useState({
-        fname: "",
-        lname: ""
+        input1: "",
+        input2: "",
+        gender: ""
     });
 
-
+    console.log(formData);
 
     const HandleModal = () => {
         setState((prevSate) => !prevSate)
@@ -27,8 +28,10 @@ export default function ButtonModal(props) {
         setTask(formerTask => [...formerTask, ` Task ${formerTask.length + 1}`])
         console.log(task);
     }
+
+
     const HandleForm = (event) => {
-        console.log(event.target.name);
+        // console.log(event.target.name);
         setFormData(prevData => {
             return {
                 ...prevData,
@@ -37,6 +40,7 @@ export default function ButtonModal(props) {
 
             }
         })
+        console.log(formData);
     }
 
 
@@ -53,10 +57,33 @@ export default function ButtonModal(props) {
             <p>Stack</p>
              */}
             {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
-            <input type="text" value={formData.fname} name="fname" placeholder="firstName" className="border formInput" onChange={HandleForm} />
-            <input type="text" value={formData.lname} name="lname" placeholder="lastName" className="border formInput" onChange={HandleForm} />
+            <input type="text" value={formData.input1} name="input1" placeholder="firstName" className="border formInput" onChange={HandleForm} />
+            <input type="text" value={formData.input2} name="input2" placeholder="lastName" className="border formInput" onChange={HandleForm} />
+
+            <legend>YOUR GENDER</legend>
+            <label htmlFor="male">
+                <input
+                    type="radio"
+                    name="gender"
+                    id="male"
+                    value="male"
+                    checked={formData.gender === "male"}
+                    onChange={HandleForm} />
+                <span className="mx-2">male</span>
+            </label>
+            <label htmlFor="fmale">
+                <input type="radio" name="gender" id="fmale" value="female" checked={formData.gender === "female"}
+                    onChange={HandleForm} />
+                <span className="mx-2">female</span>
+            </label>
+            <label htmlFor="others">
+                <input type="radio" name="gender" id="others" value="others" checked={formData.gender === "others"}
+                    onChange={HandleForm} />
+                <span className="mx-2">others...</span>
+            </label>
+
             <br />
-            <p className="text-start">My first Name is {formData.fname} and my Last name {formData.lname}</p>
+            <p className="text-start">My first Name is {formData.input1} and my Last name {formData.input2}</p>
 
         </div>
     )
