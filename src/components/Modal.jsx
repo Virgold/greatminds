@@ -3,25 +3,36 @@ import React, { useState } from "react";
 
 export default function ButtonModal(props) {
 
+
+
+
+
     const [state, setState] = useState(true)
     const [age, setAge] = useState(0)
     const [task, setTask] = useState(["Task 1",])
     const [formData, setFormData] = useState({
-        input1: "",
-        input2: "",
-        gender: ""
+        fname: "",
+        email: "",
+        password: "",
+        gender: "",
+        required: true
     });
+
 
     console.log(formData);
 
+
     const HandleModal = () => {
-        setState((prevSate) => !prevSate)
+        setState(prevState => !prevState)
     }
+
+
 
     function handleAge() {
         setAge(prevAge => prevAge + 1)
     }
-    // console.log(task);
+
+
 
     const HandleTask = () => {
 
@@ -30,12 +41,16 @@ export default function ButtonModal(props) {
     }
 
 
+
+
     const HandleForm = (event) => {
-        // console.log(event.target.name);
+        // console.log(event.target.value);
+        const { name, type, value } = event.target
+        console.log(name);
         setFormData(prevData => {
             return {
                 ...prevData,
-                [event.target.name]: event.target.value,
+                [name]: type === "checkbox" ? !prevData.required : value
                 // []: event.target.value
 
             }
@@ -57,8 +72,11 @@ export default function ButtonModal(props) {
             <p>Stack</p>
              */}
             {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
-            <input type="text" value={formData.input1} name="input1" placeholder="firstName" className="border formInput" onChange={HandleForm} />
-            <input type="text" value={formData.input2} name="input2" placeholder="lastName" className="border formInput" onChange={HandleForm} />
+            <input type="text" value={formData.fname} name="fname" placeholder="firstName" className="border formInput" onChange={HandleForm} />
+
+            <input type="email" value={formData.email} name="email" placeholder="User Email" className="border formInput" onChange={HandleForm} />
+
+            <input type="password" value={formData.password} name="password" placeholder="Enter Password..." className="border formInput" onChange={HandleForm} />
 
             <legend>YOUR GENDER</legend>
             <label htmlFor="male">
@@ -68,22 +86,49 @@ export default function ButtonModal(props) {
                     id="male"
                     value="male"
                     checked={formData.gender === "male"}
-                    onChange={HandleForm} />
+                    onChange={HandleForm}
+                />
                 <span className="mx-2">male</span>
             </label>
-            <label htmlFor="fmale">
-                <input type="radio" name="gender" id="fmale" value="female" checked={formData.gender === "female"}
-                    onChange={HandleForm} />
+
+            <label htmlFor="female">
+                <input
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="female"
+                    checked={formData.gender === "female"}
+                    onChange={HandleForm}
+
+                />
                 <span className="mx-2">female</span>
             </label>
             <label htmlFor="others">
-                <input type="radio" name="gender" id="others" value="others" checked={formData.gender === "others"}
-                    onChange={HandleForm} />
-                <span className="mx-2">others...</span>
-            </label>
+                <input
+                    type="radio"
+                    name="gender"
+                    id="others"
+                    value="others"
+                    checked={formData.gender === "others"}
+                    onChange={HandleForm}
 
+                />
+                <span className="mx-2">others ...</span>
+            </label>
+            <label htmlFor="required">
+
+                <input
+                    type="checkbox"
+                    name="required"
+                    id="required"
+                    value="required"
+                    checked={formData.required}
+                    onChange={HandleForm}
+                />
+                <span className="mx-2"> Terms & conditions</span>
+            </label>
             <br />
-            <p className="text-start">My first Name is {formData.input1} and my Last name {formData.input2}</p>
+            <p className="text-start">My first Name is {formData.fname} and my Last name {formData.lname}</p>
 
         </div>
     )
