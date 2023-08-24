@@ -6,20 +6,21 @@ export default function ButtonModal(props) {
   const [task, setTask] = useState(["Task 1"]);
   const [formData, setFormData] = useState({
     fname: "",
-    lname: "",
+    email: "",
+    password: "",
     gender: "",
+    required: true,
   });
 
   console.log(formData);
 
   const HandleModal = () => {
-    setState((prevSate) => !prevSate);
+    setState((prevState) => !prevState);
   };
 
   function handleAge() {
     setAge((prevAge) => prevAge + 1);
   }
-  // console.log(task);
 
   const HandleTask = () => {
     setTask((formerTask) => [...formerTask, ` Task ${formerTask.length + 1}`]);
@@ -27,11 +28,13 @@ export default function ButtonModal(props) {
   };
 
   const HandleForm = (event) => {
-    // console.log(event.target.name);
+    // console.log(event.target.value);
+    const { name, type, value } = event.target;
+    console.log(name);
     setFormData((prevData) => {
       return {
         ...prevData,
-        [event.target.name]: event.target.value,
+        [name]: type === "checkbox" ? !prevData.required : value,
         // []: event.target.value
       };
     });
@@ -61,18 +64,26 @@ export default function ButtonModal(props) {
       </div>
       <div>
         <input
-          type="text"
-          value={formData.lname}
-          name="lname"
-          placeholder="lastName"
+          type="email"
+          value={formData.email}
+          name="email"
+          placeholder="User Email"
           className="border formInput"
           onChange={HandleForm}
         />
       </div>
+      <input
+        type="password"
+        value={formData.password}
+        name="password"
+        placeholder="Enter Password..."
+        className="border formInput"
+        onChange={HandleForm}
+      />
+
       <legend>YOUR GENDER</legend>
       <label htmlFor="male">
         <input
-        
           type="radio"
           name="gender"
           id="male"
@@ -82,11 +93,12 @@ export default function ButtonModal(props) {
         />
         <span className="mx-2">male</span>
       </label>
-      <label htmlFor="fmale">
+
+      <label htmlFor="female">
         <input
           type="radio"
           name="gender"
-          id="fmale"
+          id="female"
           value="female"
           checked={formData.gender === "female"}
           onChange={HandleForm}
@@ -102,9 +114,19 @@ export default function ButtonModal(props) {
           checked={formData.gender === "others"}
           onChange={HandleForm}
         />
-        <span className="mx-2">others...</span>
+        <span className="mx-2">others ...</span>
       </label>
-
+      <label htmlFor="required">
+        <input
+          type="checkbox"
+          name="required"
+          id="required"
+          value="required"
+          checked={formData.required}
+          onChange={HandleForm}
+        />
+        <span className="mx-2"> Terms & conditions</span>
+      </label>
       <br />
       <p className="text-start">
         My first Name is {formData.fname} and my Last name {formData.lname}
