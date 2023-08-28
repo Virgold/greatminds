@@ -4,9 +4,7 @@ import React, { useState } from "react";
 export default function ButtonModal(props) {
 
 
-
-
-
+    
     const [state, setState] = useState(true)
     const [age, setAge] = useState(0)
     const [task, setTask] = useState(["Task 1",])
