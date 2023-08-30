@@ -7,8 +7,7 @@ export default class Counter extends Component {
   constructor(){
     super()
     this.state = {
-      count : 100,
-      stopCount:500
+      count : 100
     }; 
   }
  
@@ -30,7 +29,7 @@ componentWillUpdate(){
 }
 
 componentWillUnmount(){
-  console.log(`counter has been unmounted and count is ${this.state.count}`);
+  console.log(`counter has unmounted and count is ${this.state.count}`);
   clearInterval(this.timer)
 }
   render() {

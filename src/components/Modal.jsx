@@ -42,7 +42,8 @@ export default function ButtonModal(props) {
   };
 
   return (
-    <div className="flex flex-col gap-2 items-start border mx-auto p-2">
+    <div className="flex flex-col gap-2 items-center border mx-auto p-2 w-full">
+      <h1 className="text-center">Sign Up </h1>
       {/* {state && <p className="modal text-red-500">{age}</p>} */}
       {/* <button className="bg-slate-200" onClick={HandleModal}>{state ? "x" : "open"}</button> */}
       {/* <button className="bg-red-200" onClick={HandleModal}>prev</button>
@@ -52,85 +53,90 @@ export default function ButtonModal(props) {
             <p>Stack</p>
              */}
       {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
-      <div>
-        <input
-          type="text"
-          value={formData.fname}
-          name="fname"
-          placeholder="firstName"
-          className="border formInput"
-          onChange={HandleForm}
-        />
-      </div>
-      <div>
-        <input
-          type="email"
-          value={formData.email}
-          name="email"
-          placeholder="User Email"
-          className="border formInput"
-          onChange={HandleForm}
-        />
-      </div>
-      <input
-        type="password"
-        value={formData.password}
-        name="password"
-        placeholder="Enter Password..."
-        className="border formInput"
-        onChange={HandleForm}
-      />
+      <div className="flex items-start flex-col w-full">
+        <label htmlFor="fname">
+          <input
+            type="text"
+            value={formData.fname}
+            name="fname"
+            placeholder="firstName"
+            className="border formInput w-full"
+            onChange={HandleForm}
+          />
+        </label>
+        <label htmlFor="email">
+          <input
+            // className="outline-none rounded"
+            type="email"
+            value={formData.email}
+            name="email"
+            placeholder="User Email"
+            className="border formInput rounded outline-none w-full"
+            onChange={HandleForm}
+          />
+        </label>
+        <label htmlFor="password">
+          <input
+            type="password"
+            value={formData.password}
+            name="password"
+            placeholder="Enter Password..."
+            className="border formInput"
+            onChange={HandleForm}
+          />
+        </label>
 
-      <legend>YOUR GENDER</legend>
-      <label htmlFor="male">
-        <input
-          type="radio"
-          name="gender"
-          id="male"
-          value="male"
-          checked={formData.gender === "male"}
-          onChange={HandleForm}
-        />
-        <span className="mx-2">male</span>
-      </label>
+        <legend>YOUR GENDER</legend>
+        <label htmlFor="male">
+          <input
+            type="radio"
+            name="gender"
+            id="male"
+            value="male"
+            checked={formData.gender === "male"}
+            onChange={HandleForm}
+          />
+          <span className="mx-2">male</span>
+        </label>
 
-      <label htmlFor="female">
-        <input
-          type="radio"
-          name="gender"
-          id="female"
-          value="female"
-          checked={formData.gender === "female"}
-          onChange={HandleForm}
-        />
-        <span className="mx-2">female</span>
-      </label>
-      <label htmlFor="others">
-        <input
-          type="radio"
-          name="gender"
-          id="others"
-          value="others"
-          checked={formData.gender === "others"}
-          onChange={HandleForm}
-        />
-        <span className="mx-2">others ...</span>
-      </label>
-      <label htmlFor="required">
-        <input
-          type="checkbox"
-          name="required"
-          id="required"
-          value="required"
-          checked={formData.required}
-          onChange={HandleForm}
-        />
-        <span className="mx-2"> Terms & conditions</span>
-      </label>
-      <br />
-      <p className="text-start">
-        My first Name is {formData.fname} and my Last name {formData.lname}
-      </p>
+        <label htmlFor="female">
+          <input
+            type="radio"
+            name="gender"
+            id="female"
+            value="female"
+            checked={formData.gender === "female"}
+            onChange={HandleForm}
+          />
+          <span className="mx-2">female</span>
+        </label>
+        <label htmlFor="others">
+          <input
+            type="radio"
+            name="gender"
+            id="others"
+            value="others"
+            checked={formData.gender === "others"}
+            onChange={HandleForm}
+          />
+          <span className="mx-2">others ...</span>
+        </label>
+        <label htmlFor="required">
+          <input
+            type="checkbox"
+            name="required"
+            id="required"
+            value="required"
+            checked={formData.required}
+            onChange={HandleForm}
+          />
+          <span className="mx-2"> Terms & conditions</span>
+        </label>
+        <br />
+        <p className="text-start">
+          My first Name is {formData.fname} and my Last name {formData.lname}
+        </p>
+      </div>
     </div>
   );
 }
