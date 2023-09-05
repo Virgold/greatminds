@@ -47,7 +47,7 @@ export default class Navbar extends Component {
                     type="submit"
                     class="absolute inset-y-0 end-0 rounded-r-lg p-2 text-gray-600"
                   >
-                    <span class="sr-only">Submit Search</span>
+                    <span class="sr-only">Submit Here</span>
                     <svg
                       class="h-5 w-5"
                       fill="currentColor"
@@ -64,13 +64,15 @@ export default class Navbar extends Component {
                 </div>
               </form>
             </div>
-
+            {/* Nav  */}
             <div class="flex w-0 flex-1 justify-end lg:hidden">
               <button
                 class="rounded bg-gray-100 p-2 text-gray-500"
                 type="button"
               >
                 <span class="sr-only">Menu Here</span>
+                class="rounded-full bg-gray-100 p-2 text-gray-500" type="button"
+                <span class="sr-only">Menu</span>
                 <svg
                   class="h-5 w-5"
                   fill="currentColor"
