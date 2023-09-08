@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 
 export default function ButtonModal(props) {
 
 
-    
+
     const [state, setState] = useState(true)
     const [age, setAge] = useState(0)
     const [task, setTask] = useState(["Task 1",])
+
     const [formData, setFormData] = useState({
         fname: "",
         email: "",
@@ -15,9 +17,12 @@ export default function ButtonModal(props) {
         gender: "",
         required: true
     });
+    const [error, setError] = useState({
+        invalidFname: "",
+        invalidEmail: "",
+        invalidPassword: ""
+    })
 
-
-    console.log(formData);
 
 
     const HandleModal = () => {
@@ -42,18 +47,74 @@ export default function ButtonModal(props) {
 
 
     const HandleForm = (event) => {
-        // console.log(event.target.value);
         const { name, type, value } = event.target
-        console.log(name);
         setFormData(prevData => {
             return {
                 ...prevData,
                 [name]: type === "checkbox" ? !prevData.required : value
-                // []: event.target.value
-
             }
         })
-        console.log(formData);
+
+        // setError(prevError => {
+        //     return {
+        //         ...prevError,
+        //         invalidFname: "",
+        //         invalidEmail: "",
+        //         invalidPassword: ""
+
+        //     }
+        // })
+
+    }
+    useEffect(() => {
+        console.log("effect called");
+        setError(prevError => {
+            return {
+                ...prevError,
+                invalidFname: "",
+                invalidEmail: "",
+                invalidPassword: ""
+            }
+        })
+
+    }, [formData])
+
+    const emailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    const validEmail = emailFormat.test(formData.email)
+
+    const handleSubmit = () => {
+        if ((formData.email === "") && (formData.password === "")) {
+            setError(prevError => {
+                return {
+                    ...prevError,
+                    invalidEmail: "Email required",
+                    invalidPassword: "Password required"
+                }
+            })
+        }
+        else if (!(formData.email === "") && (formData.password === "")) {
+          
+                setError(prevError => {
+                    return {
+                        ...prevError,
+                        // invalidEmail: "",
+                        invalidPassword: "Password required"
+                    }
+                })
+        
+        }
+        else if ((formData.email === "") && !(formData.password === "")) {
+          
+            setError(prevError => {
+                return {
+                    ...prevError,
+                    invalidEmail: "Email required",
+                    // invalidPassword: ""
+                }
+            })
+    
+    }
+
     }
 
 
@@ -61,20 +122,15 @@ export default function ButtonModal(props) {
 
     return (
         <div className="flex flex-col gap-2 items-start border mx-auto p-2">
-            {/* {state && <p className="modal text-red-500">{age}</p>} */}
-            {/* <button className="bg-slate-200" onClick={HandleModal}>{state ? "x" : "open"}</button> */}
-            {/* <button className="bg-red-200" onClick={HandleModal}>prev</button>
-            <p>I am {age} years old today </p>
-            <button className="bg-green-200" onClick={handleAge}>next</button> */}
-            {/* <h2>name</h2>
-            <p>Stack</p>
-             */}
-            {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
+
             <input type="text" value={formData.fname} name="fname" placeholder="firstName" className="border formInput" onChange={HandleForm} />
+            <span>{error.invalidFname}</span>
 
             <input type="email" value={formData.email} name="email" placeholder="User Email" className="border formInput" onChange={HandleForm} />
+            <span>{error.invalidEmail}</span>
 
             <input type="password" value={formData.password} name="password" placeholder="Enter Password..." className="border formInput" onChange={HandleForm} />
+            <span>{error.invalidPassword}</span>
 
             <legend>YOUR GENDER</legend>
             <label htmlFor="male">
@@ -126,8 +182,7 @@ export default function ButtonModal(props) {
                 <span className="mx-2"> Terms & conditions</span>
             </label>
             <br />
-            <p className="text-start">My first Name is {formData.fname} and my Last name {formData.lname}</p>
-
+            <button onClick={handleSubmit}>submit</button>
         </div>
     )
 }
