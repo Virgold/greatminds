@@ -73,7 +73,7 @@ export default function ButtonModal(props) {
             <input type="text" value={formData.fname} name="fname" placeholder="firstName" className="border formInput" onChange={HandleForm} />
 
             <input type="email" value={formData.email} name="email" placeholder="User Email" className="border formInput" onChange={HandleForm} />
-
+n
             <input type="password" value={formData.password} name="password" placeholder="Enter Password..." className="border formInput" onChange={HandleForm} />
 
             <legend>YOUR GENDER</legend>
