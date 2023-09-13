@@ -52,39 +52,12 @@ export default function ButtonModal(props) {
       {/* <h2>name</h2>
             <p>Stack</p>
              */}
-      {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
-      <div className="flex items-start flex-col w-full space-y-4">
-        <label htmlFor="fname">
-          <input
-            type="text"
-            value={formData.fname}
-            name="fname"
-            placeholder="firstName"
-            className="border formInput w-full"
-            onChange={HandleForm}
-          />
-        </label>
-        <label htmlFor="email">
-          <input
-            // className="outline-none rounded"
-            type="email"
-            value={formData.email}
-            name="email"
-            placeholder="User Email"
-            className="border formInput rounded outline-none w-full"
-            onChange={HandleForm}
-          />
-        </label>
-        <label htmlFor="password">
-          <input
-            type="password"
-            value={formData.password}
-            name="password"
-            placeholder="Enter Password..."
-            className="border formInput"
-            onChange={HandleForm}
-          />
-        </label>
+            {/* <button className="bg-green-200" onClick={HandleTask}>+</button> */}
+            <input type="text" value={formData.fname} name="fname" placeholder="firstName" className="border formInput" onChange={HandleForm} />
+
+            <input type="email" value={formData.email} name="email" placeholder="User Email" className="border formInput" onChange={HandleForm} />
+
+            <input type="password" value={formData.password} name="password" placeholder="Enter Password..." className="border formInput" onChange={HandleForm} />
 
         <legend>YOUR GENDER</legend>
         <label htmlFor="male">
