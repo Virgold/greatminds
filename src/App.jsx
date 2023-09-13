@@ -14,8 +14,8 @@ function App() {
       <div className="flex flex-col md:flex-row items-center justify-center m-auto h-full ">
         <div className="flex md:flex-row flex-wrap gap-x-20 gap-y-5 items-center justify-center w-full h-full">
           <ButtonModal />
-          <Cards />
-          <ChangeDocument />
+          {/* <Cards /> */}
+          {/* <ChangeDocument /> */}
         </div>
       </div>
       {/* <Navbar /> */}
