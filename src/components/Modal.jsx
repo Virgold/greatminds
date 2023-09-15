@@ -127,12 +127,8 @@ export default function ButtonModal(props) {
             <span>{error.invalidFname}</span>
 
             <input type="email" value={formData.email} name="email" placeholder="User Email" className="border formInput" onChange={HandleForm} />
-<<<<<<< HEAD
             <span>{error.invalidEmail}</span>
 
-=======
-n
->>>>>>> origin/master
             <input type="password" value={formData.password} name="password" placeholder="Enter Password..." className="border formInput" onChange={HandleForm} />
             <span>{error.invalidPassword}</span>
 
