@@ -18,7 +18,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
+
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
@@ -79,4 +80,4 @@ button:focus-visible {
 
 .formInput:focus {
   outline: none;
-}
+} */
